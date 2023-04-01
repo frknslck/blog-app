@@ -12,15 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DesktopMacIcon from '@mui/icons-material/DesktopMac';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const pages = ['newblog', 'about', 'profile', 'login', 'register'];
+const pages = ['newblog', 'about' ];
 const settings = ['profile', 'login', 'register', 'logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const navigate = useNavigate()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -45,8 +44,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               ml: 1,
               mr: 2,
@@ -91,7 +90,17 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{textAlign: "center", textTransform: 'capitalize'}}>{page}</Typography>
+                  <Typography 
+                    sx={{
+                      textAlign: "center", 
+                      textTransform: 'capitalize',
+                      textDecoration: "none",
+                      boxShadow: "none",
+                    }}
+                    color="textPrimary"
+                    component={Link}
+                    to={`/${page}`}
+                  >{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -100,8 +109,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -121,7 +130,8 @@ function ResponsiveAppBar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-                href={`${page}`}
+                component={Link}
+                to={`/${page}`}
               >
                 {page}
               </Button>
@@ -152,7 +162,17 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{textAlign: "center", textTransform: 'capitalize'}}>{setting}</Typography>
+                  <Typography 
+                    sx={{
+                      textAlign: "center", 
+                      textTransform: 'capitalize',
+                      textDecoration: "none",
+                      boxShadow: "none",
+                    }}
+                    color="textPrimary"
+                    component={Link}
+                    to={`/${setting}`}
+                  >{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
