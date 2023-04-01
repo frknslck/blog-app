@@ -10,12 +10,18 @@ const useBlogCalls = () => {
     const getBlogs = async (id) => {
         dispatch(fetchStart())
         try {
-            if (id) {
+            if (id == "categories") {
+                const { data } = await axiosWithToken.get(`api/categories/`)
+                const url = "categories"
+                dispatch(getSuccess({data, url}))
+            }else if (id){
                 const { data } = await axiosWithToken.get(`api/blogs/${id}/`)
-                dispatch(getSuccess({data}))
-            } else {
+                const url = "blogs"
+                dispatch(getSuccess({data, url}))
+            }else {
                 const { data } = await axiosWithPublic.get(`api/blogs/`)
-                dispatch(getSuccess({data}))
+                const url = "blogs"
+                dispatch(getSuccess({data, url}))
             }
         } catch (error) {
             console.log(error);
@@ -24,18 +30,34 @@ const useBlogCalls = () => {
     }
 
     const postLike = async (id, detail) => {
-    try {
-        await axiosWithToken.post(`api/likes/${id}/`);
-        if(detail){
-            getBlogs(id)
-        }else{
-            getBlogs()
+        try {
+            await axiosWithToken.post(`api/likes/${id}/`);
+            if(detail){
+                getBlogs(id)
+            }else{
+                getBlogs()
+            }
+        } catch (error) {
         }
-    } catch (error) {
     }
-  };
 
-  return {getBlogs, postLike}
+    const postData = async (url, data) => {
+        try {
+            await axiosWithToken.post(`api/${url}/`, data);
+            if (url === "blogs") {
+                toastSuccessNotify(`${url} successfuly added`);
+                getBlogs();
+            } else {
+                toastSuccessNotify(`Comments successfuly added`);
+                getBlogs(data.post);
+            }
+        } catch (error) {
+            console.log(error);
+            toastErrorNotify(`${url} can not be added`);
+        }
+    }
+
+  return {getBlogs, postLike, postData}
 }
 
 export default useBlogCalls

@@ -14,8 +14,10 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Box, Button } from '@mui/material';
 import useBlogCalls from '../../hooks/useBlogCalls';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function RecipeReviewCard({ blog }) {
+  const { currentUser } = useSelector((state) => state.auth)
   const { postLike } = useBlogCalls();
   const navigate = useNavigate()
   let date = new Date(blog?.publish_date)
@@ -67,7 +69,12 @@ export default function RecipeReviewCard({ blog }) {
       <CardActions disableSpacing sx={{display: "flex", justifyContent: "space-around", gap: 5}}>
         <Box>
           <IconButton aria-label="add to favorites" onClick={() => handleLike(blog?.id)}>
-            <FavoriteIcon /> {blog?.likes}
+            <FavoriteIcon sx={{
+              color:
+                blog?.likes_n?.filter(
+                  (like) => like.user_id === currentUser.id
+                )[0]?.user_id && "red",
+            }}/> {blog?.likes}
           </IconButton>
           <IconButton aria-label="comment">
             <CommentIcon /> {blog?.comment_count}

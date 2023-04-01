@@ -8,11 +8,8 @@ export default function GuestFooter() {
   return (
     <Paper sx={{
       display: { xs: 'none', md: 'block' },
-      marginTop: 'calc(10% + 60px)',
+      marginTop: '60px',
       width: '100%',
-      position: 'fixed',
-      bottom: 0,
-      width: '100%'
     }} component="footer" square variant="outlined">
       <Container maxWidth="lg">
         <Box
@@ -47,7 +44,7 @@ export default function GuestFooter() {
               textDecoration: 'none',
             }}
           >
-            Copyright ©2023.
+            Copyright ©{new Date().getFullYear()}.
           </Typography>
         </Box>
       </Container>

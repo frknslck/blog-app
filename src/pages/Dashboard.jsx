@@ -20,7 +20,7 @@ const Dashboard = () => {
       gap: 5,
       my: "1.5rem"
     }}>
-      {blogs?.map((blog) => (
+      {blogs.length && blogs?.map((blog) => (
         <BlogCard key={blog?.id} blog={blog}/>
       ))}
     </Grid>

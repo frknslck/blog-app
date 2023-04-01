@@ -7,7 +7,6 @@ const authSlice = createSlice({
     currentUser: null,
     loading: false,
     error: false,
-    isAdmin: false,
     token: null,
   },
   reducers: {
@@ -17,8 +16,7 @@ const authSlice = createSlice({
     },
     loginSuccess: (state, { payload }) => {
       state.loading = false;
-      state.currentUser = payload?.user?.username;
-      state.isAdmin = payload?.user?.is_superuser;
+      state.currentUser = payload?.user;
       state.token = payload?.key;
     },
     logoutSuccess: (state) => {
@@ -28,7 +26,7 @@ const authSlice = createSlice({
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.currentUser = payload?.username;
+      state.currentUser = payload;
       state.token = payload?.token;
       state.error = false;
     },
