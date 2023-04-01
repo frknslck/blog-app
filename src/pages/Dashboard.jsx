@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import useBlogCalls from '../hooks/useBlogCalls'
 import BlogCard from "../components/blog/BlogCard"
 import {useSelector} from "react-redux"
+import { Grid } from '@mui/material'
 
 const Dashboard = () => {
   const { getBlogs } = useBlogCalls()
@@ -12,11 +13,17 @@ const Dashboard = () => {
   }, [])
   
   return (
-    <>
+    <Grid container sx={{
+      display: "flex", 
+      justifyContent: "center", 
+      alignItems: "center", 
+      gap: 5,
+      my: "1.5rem"
+    }}>
       {blogs?.map((blog) => (
-        <BlogCard key={blog?.id}/>
+        <BlogCard key={blog?.id} blog={blog}/>
       ))}
-    </>
+    </Grid>
   )
     
   
