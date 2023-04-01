@@ -42,28 +42,28 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             error={touched.username && Boolean(errors.username)}
           />
           <TextField
-            label="First Name"
-            name="first_name"
-            id="firstName"
-            type="text"
+            label="Image"
+            name="image"
+            id="image"
+            type="url"
             variant="outlined"
-            value={values.first_name}
+            value={values.image}
             onChange={handleChange}
             onBlur={handleBlur}
-            helperText={touched.first_name && errors.first_name}
-            error={touched.first_name && Boolean(errors.first_name)}
+            helperText={touched.image && errors.image}
+            error={touched.image && Boolean(errors.image)}
           />
           <TextField
-            label="Last Name"
-            name="last_name"
-            id="last_name"
+            label="Bio"
+            name="bio"
+            id="bio"
             type="text"
             variant="outlined"
-            value={values.last_name}
+            value={values.bio}
             onChange={handleChange}
             onBlur={handleBlur}
-            helperText={touched.last_name && errors.last_name}
-            error={touched.last_name && Boolean(errors.last_name)}
+            helperText={touched.bio && errors.bio}
+            error={touched.bio && Boolean(errors.bio)}
           />
           <TextField
             label="Email"

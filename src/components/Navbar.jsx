@@ -13,11 +13,17 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DesktopMacIcon from '@mui/icons-material/DesktopMac';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import useAuthCall from '../hooks/useAuthCall';
+import { red } from '@mui/material/colors';
 
 const pages = ['newblog', 'about' ];
-const settings = ['profile', 'login', 'register', 'logout'];
+const settingsPublic = ['login', 'register'];
+const settingsUser = ['profile', 'logout'];
 
 function ResponsiveAppBar() {
+  const {currentUser} = useSelector((state) => state.auth)
+  const {logout} = useAuthCall()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -141,7 +147,11 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {currentUser?.image ?
+                  <Avatar alt={currentUser?.username} src={currentUser?.image } /> 
+                  :
+                  <Avatar sx={{ bgcolor: red[500] }}>{currentUser?.username.charAt(1).toUpperCase()}</Avatar>
+                }
               </IconButton>
             </Tooltip>
             <Menu
@@ -160,21 +170,37 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography 
-                    sx={{
-                      textAlign: "center", 
-                      textTransform: 'capitalize',
-                      textDecoration: "none",
-                      boxShadow: "none",
-                    }}
-                    color="textPrimary"
-                    component={Link}
-                    to={`/${setting}`}
-                  >{setting}</Typography>
-                </MenuItem>
-              ))}
+              {currentUser ?
+                settingsUser.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography 
+                      sx={{
+                        textAlign: "center", 
+                        textTransform: 'capitalize',
+                        textDecoration: "none",
+                        boxShadow: "none",
+                      }}
+                      color="textPrimary"
+                      component={Link}
+                      to={setting == "profile" && `/profile`}
+                      onClick={setting == "logout" && logout}
+                    >{setting}</Typography>
+                  </MenuItem>)) :
+                  settingsPublic.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography 
+                        sx={{
+                          textAlign: "center", 
+                          textTransform: 'capitalize',
+                          textDecoration: "none",
+                          boxShadow: "none",
+                        }}
+                        color="textPrimary"
+                        component={Link}
+                        to={`/${setting}`}
+                      >{setting}</Typography>
+                    </MenuItem>))
+              }
             </Menu>
           </Box>
         </Toolbar>

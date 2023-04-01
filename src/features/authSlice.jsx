@@ -28,7 +28,6 @@ const authSlice = createSlice({
       state.loading = false;
       state.currentUser = payload;
       state.token = payload?.token;
-      state.error = false;
     },
     fetchFail: (state) => {
       state.loading = false;

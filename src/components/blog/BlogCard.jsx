@@ -15,15 +15,21 @@ import { Box, Button } from '@mui/material';
 import useBlogCalls from '../../hooks/useBlogCalls';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { toastErrorNotify } from "../../helper/ToastNotify"
 
-export default function RecipeReviewCard({ blog }) {
+export default function BlogCard({ blog }) {
   const { currentUser } = useSelector((state) => state.auth)
   const { postLike } = useBlogCalls();
   const navigate = useNavigate()
   let date = new Date(blog?.publish_date)
 
   const handleLike = (id) => {
-    postLike(id)
+    if(currentUser){
+      postLike(id)
+    }else{
+      navigate("/login")
+      toastErrorNotify(`Login for like`);
+    }
   }
 
   const handleNavigate = (id) => {
@@ -72,7 +78,7 @@ export default function RecipeReviewCard({ blog }) {
             <FavoriteIcon sx={{
               color:
                 blog?.likes_n?.filter(
-                  (like) => like.user_id === currentUser.id
+                  (like) => like?.user_id === currentUser?.id
                 )[0]?.user_id && "red",
             }}/> {blog?.likes}
           </IconButton>
