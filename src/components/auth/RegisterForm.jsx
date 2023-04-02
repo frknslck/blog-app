@@ -8,8 +8,8 @@ export const registerSchema = object({
   username: string()
     .max(10, "Kullanıcı adı 10 karakterden az olmalıdır.")
     .required(),
-  firstname: string().max(20, "İsim 20 karakterden az olmalıdır.").required(),
-  lastname: string()
+  first_name: string().max(20, "İsim 20 karakterden az olmalıdır.").required(),
+  last_name: string()
     .max(20, "Soyisim 30 karakterden az olmalıdır.")
     .required(),
   email: string().email().required(),
@@ -41,27 +41,27 @@ const RegisterForm = ({ values, handleChange, errors, touched, handleBlur }) => 
           />
           <TextField
             label="First Name"
-            name="firstname"
+            name="first_name"
             id="firstName"
             type="text"
             variant="outlined"
-            value={values.firstname}
+            value={values.first_name}
             onChange={handleChange}
             onBlur={handleBlur}
-            helperText={touched.firstname && errors.firstname}
-            error={touched.firstname && Boolean(errors.firstname)}
+            helperText={touched.first_name && errors.first_name}
+            error={touched.first_name && Boolean(errors.first_name)}
           />
           <TextField
             label="Last Name"
-            name="lastname"
+            name="last_name"
             id="lastName"
             type="text"
             variant="outlined"
-            value={values.lastname}
+            value={values.last_name}
             onChange={handleChange}
             onBlur={handleBlur}
-            helperText={touched.lastname && errors.lastname}
-            error={touched.lastname && Boolean(errors.lastname)}
+            helperText={touched.last_name && errors.last_name}
+            error={touched.last_name && Boolean(errors.last_name)}
           />
           <TextField
             label="Image"
