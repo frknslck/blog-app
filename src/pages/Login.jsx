@@ -13,22 +13,16 @@ const Login = () => {
   const { login } = useAuthCall()
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" style={{minHeight: `calc(100vh - 230px)`}}>
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
         sx={{
-          height: "100vh",
-          p: 2,
+          m: "2rem auto",
+          p: 2
         }}
       >
-        <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
-          </Typography>
-        </Grid>
-
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{

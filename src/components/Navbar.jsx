@@ -147,6 +147,14 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Typography sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.2rem',
+                  color: 'white',
+                }}>{currentUser.username}</Typography>
                 {currentUser?.image ?
                   <Avatar alt={currentUser?.username} src={currentUser?.image } /> 
                   :

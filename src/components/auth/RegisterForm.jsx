@@ -8,11 +8,10 @@ export const registerSchema = object({
   username: string()
     .max(10, "Kullanıcı adı 10 karakterden az olmalıdır.")
     .required(),
-  first_name: string().max(20, "İsim 20 karakterden az olmalıdır.").required(),
-  last_name: string()
+  firstname: string().max(20, "İsim 20 karakterden az olmalıdır.").required(),
+  lastname: string()
     .max(20, "Soyisim 30 karakterden az olmalıdır.")
     .required(),
-
   email: string().email().required(),
   password: string()
     .required("password zorunludur")
@@ -24,9 +23,8 @@ export const registerSchema = object({
     .matches(/[!,?{}><%&$#£+-.*]+/, "Password bir özel karakter içermelidir"),
 })
 
-const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
+const RegisterForm = ({ values, handleChange, errors, touched, handleBlur }) => {
   return (
-    <div>
       <Form>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <TextField
@@ -40,6 +38,30 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             onBlur={handleBlur}
             helperText={touched.username && errors.username}
             error={touched.username && Boolean(errors.username)}
+          />
+          <TextField
+            label="First Name"
+            name="firstname"
+            id="firstName"
+            type="text"
+            variant="outlined"
+            value={values.firstname}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.firstname && errors.firstname}
+            error={touched.firstname && Boolean(errors.firstname)}
+          />
+          <TextField
+            label="Last Name"
+            name="lastname"
+            id="lastName"
+            type="text"
+            variant="outlined"
+            value={values.lastname}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.lastname && errors.lastname}
+            error={touched.lastname && Boolean(errors.lastname)}
           />
           <TextField
             label="Image"
@@ -94,8 +116,7 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           </Button>
         </Box>
       </Form>
-    </div>
   )
 }
 
-export default SignUpForm
+export default RegisterForm

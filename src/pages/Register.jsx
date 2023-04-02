@@ -7,30 +7,23 @@ import Grid from "@mui/material/Grid";
 import RegisterForm, { registerSchema } from "../components/auth/RegisterForm";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
-
 import useAuthCall from "../hooks/useAuthCall";
 
 const Register = () => {
   const { register } = useAuthCall();
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" style={{height: `calc(100vh - 172px)`}}>
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
         rowSpacing={{ sm: 3 }}
         sx={{
-          height: "100vh",
-          p: 2,
+          m: "2rem auto",
+          p: 2
         }}
       >
-        <Grid item xs={12}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
-          </Typography>
-        </Grid>
-
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
@@ -50,12 +43,13 @@ const Register = () => {
           >
             Register
           </Typography>
-
           <Formik
             initialValues={{
               username: "",
-              first_name: "",
-              last_name: "",
+              firstname: "",
+              lastname: "",
+              image:"",
+              bio:"",
               email: "",
               password: "",
             }}
@@ -67,8 +61,8 @@ const Register = () => {
             }}
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
-          <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/">Do you have an account?</Link>
+          <Box sx={{ textAlign: "center" }}>
+            <Link to="/login">Do you have an account?</Link>
           </Box>
         </Grid>
       </Grid>

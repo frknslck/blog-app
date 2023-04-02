@@ -15,7 +15,7 @@ import CommentCard from "../components/blog/CommentCard"
 import CommentForm from "../components/blog/CommentForm"
 
 const Detail = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const { getBlogs, postLike } = useBlogCalls()
   const { id } = useParams();
   const { blogs } = useSelector((state) => state.blogs)
@@ -28,18 +28,21 @@ const Detail = () => {
   }, [])
 
   return (
-    <Container sx={{
+    <Container 
+    // style={{ minHeight: `calc(100vh - 250px)`}}
+    sx={{
       maxWidth: { xs: 500, md: 900 },
       display: "flex",
       flexDirection:"column",
       justifyContent: "center",
       my:"20px",
-      gap: 5
+      gap: 5,
+      minHeight: `calc(100vh - 250px)`
     }}>
       <Box component="img" src={blogs?.image} sx={{
         objectFit: "contain",
-        height: 350,
-        // maxHeight: { xs: 350, md: 250 },
+        // height: 350,
+        maxHeight: { xs: 350, md: 300 },
       }}/>
       <Box component="header" sx={{
         display: "flex",

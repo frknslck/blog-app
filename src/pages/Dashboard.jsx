@@ -18,7 +18,8 @@ const Dashboard = () => {
       justifyContent: "center", 
       alignItems: "center", 
       gap: 5,
-      my: "1.5rem"
+      my: "1.5rem",
+      minHeight: `calc(100vh - 230px)`
     }}>
       {blogs.length && blogs?.map((blog) => (
         <BlogCard key={blog?.id} blog={blog}/>
