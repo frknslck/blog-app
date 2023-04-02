@@ -154,7 +154,7 @@ function ResponsiveAppBar() {
                   fontWeight: 700,
                   letterSpacing: '.2rem',
                   color: 'white',
-                }}>{currentUser.username}</Typography>
+                }}>{currentUser?.username}</Typography>
                 {currentUser?.image ?
                   <Avatar alt={currentUser?.username} src={currentUser?.image } /> 
                   :
