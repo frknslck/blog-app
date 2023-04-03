@@ -7,7 +7,7 @@ import Box from "@mui/material/Box"
 import useAuthCall from "../hooks/useAuthCall";
 import { Edit, Save } from '@mui/icons-material';
 import { useState } from "react";
-
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const {currentUser} = useSelector((state) => state.auth)
@@ -42,6 +42,9 @@ const Profile = () => {
 
   return (
     <>
+      <Helmet>
+          <title>BlogApp - Profile</title>
+      </Helmet>
       <Box style={{ minHeight: `calc(100vh - 230px)`}} >
       <Card
         sx={{

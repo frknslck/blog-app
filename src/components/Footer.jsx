@@ -36,7 +36,6 @@ export default function GuestFooter() {
             component="a"
             href="/"
             sx={{
-              display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
@@ -44,7 +43,9 @@ export default function GuestFooter() {
               textDecoration: 'none',
             }}
           >
-            Copyright ©{new Date().getFullYear()}.
+           Developed by FSB
+           <br/>
+           Copyright ©{new Date().getFullYear()}.
           </Typography>
         </Box>
       </Container>

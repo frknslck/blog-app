@@ -3,6 +3,7 @@ import useBlogCalls from '../hooks/useBlogCalls'
 import BlogCard from "../components/blog/BlogCard"
 import {useSelector} from "react-redux"
 import { Grid } from '@mui/material'
+import {Helmet} from "react-helmet";
 
 const Dashboard = () => {
   const { getBlogs } = useBlogCalls()
@@ -13,18 +14,23 @@ const Dashboard = () => {
   }, [])
   
   return (
-    <Grid container sx={{
-      display: "flex", 
-      justifyContent: "center", 
-      alignItems: "center", 
-      gap: 5,
-      my: "1.5rem",
-      minHeight: `calc(100vh - 230px)`
-    }}>
-      {blogs.length && blogs?.map((blog) => (
-        <BlogCard key={blog?.id} blog={blog}/>
-      ))}
-    </Grid>
+    <>
+      <Helmet>
+          <title>BlogApp - Dashboard</title>
+      </Helmet>
+      <Grid container sx={{
+        display: "flex", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        gap: 5,
+        my: "1.5rem",
+        minHeight: `calc(100vh - 230px)`
+      }}>
+        {blogs.length && blogs?.map((blog) => (
+          <BlogCard key={blog?.id} blog={blog}/>
+        ))}
+      </Grid>
+    </>
   )
     
   

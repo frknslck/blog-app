@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux';
 import useAuthCall from '../hooks/useAuthCall';
 import { red } from '@mui/material/colors';
 
-const pages = ['newblog', 'about' ];
+const pages = ['myblogs', 'newblog', 'about' ];
 const settingsPublic = ['login', 'register'];
 const settingsUser = ['profile', 'logout'];
 

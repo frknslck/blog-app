@@ -9,6 +9,7 @@ import { Box, Container } from "@mui/system";
 import React, {useState, useEffect} from "react";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 
 const initialState = {
   title: "",
@@ -41,6 +42,10 @@ const NewBlog = () => {
   
 
   return (
+    <>
+    <Helmet>
+          <title>BlogApp - Newblog</title>
+    </Helmet>
     <Container component="main" maxWidth="xs" sx={{ minHeight: `calc(100vh - 230px)` }}>
       <CssBaseline />
       <Box sx={{
@@ -156,6 +161,7 @@ const NewBlog = () => {
         </Box>
       </Box>
     </Container>
+    </>
   );
 };
 

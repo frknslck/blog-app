@@ -13,6 +13,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import IconButton from '@mui/material/IconButton';
 import CommentCard from "../components/blog/CommentCard"
 import CommentForm from "../components/blog/CommentForm"
+import { Helmet } from 'react-helmet'
 
 const Detail = () => {
   const [open, setOpen] = useState(false)
@@ -26,8 +27,12 @@ const Detail = () => {
   useEffect(() => {
     getBlogs(id)
   }, [])
-
+  
   return (
+    <>
+    <Helmet>
+          <title>BlogApp - Detail of {id}</title>
+      </Helmet>
     <Container 
     // style={{ minHeight: `calc(100vh - 250px)`}}
     sx={{
@@ -95,6 +100,7 @@ const Detail = () => {
         }
       </Box>
     </Container>
+    </>
   )
 }
 

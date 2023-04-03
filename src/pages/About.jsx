@@ -6,10 +6,13 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHub from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import logo from "../assets/logo.png"
-
+import { Helmet } from "react-helmet";
 const About = () => {
   return (
     <>
+      <Helmet>
+          <title>BlogApp - About</title>
+      </Helmet>
       <Box style={{ minHeight: `calc(100vh - 230px)`}} >
       <Card
         sx={{

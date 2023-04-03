@@ -11,6 +11,7 @@ import About from "../pages/About"
 import Detail from "../pages/Detail"
 import NotFound from "../pages/NotFound"
 import Profile from "../pages/Profile"
+import MyBlogs from "../pages/MyBlogs";
 
 const AppRouter = () => {
   return (
@@ -29,6 +30,9 @@ const AppRouter = () => {
             </Route>
             <Route path="/profile" element={<PrivateRouter/>}>
               <Route path="" element={<Profile/>} /> 
+            </Route>
+            <Route path="/myblogs" element={<PrivateRouter/>}>
+              <Route path="" element={<MyBlogs/>} /> 
             </Route>
         </Routes>
         <Footer/>
