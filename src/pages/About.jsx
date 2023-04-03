@@ -13,10 +13,11 @@ const About = () => {
       <Box style={{ minHeight: `calc(100vh - 230px)`}} >
       <Card
         sx={{
-          width: {xs: 600, md: 345},
+          maxWidth: 345,
+          height: "500px",
           margin: "2rem auto",
           display: "flex",
-          flexDirection: {xs: "row" , md: "column"},
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           boxShadow:
@@ -31,7 +32,6 @@ const About = () => {
             p: 1,
             objectFit: "contain",
             height: {xs: "300px", md: "400px"},
-
           }}
         />
         <CardContent>

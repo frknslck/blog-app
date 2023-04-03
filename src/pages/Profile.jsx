@@ -45,11 +45,11 @@ const Profile = () => {
       <Box style={{ minHeight: `calc(100vh - 230px)`}} >
       <Card
         sx={{
-          width: {xs: 600, md: 345},
-          height: {xs: "fit-content", md: "700px"},
+          maxWidth: 345,
+          height: "700px",
           margin: "2rem auto",
           display: "flex",
-          flexDirection: {xs: "row" , md: "column"},
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           boxShadow:
@@ -89,18 +89,21 @@ const Profile = () => {
                 name="username"
                 value={user?.username}
                 onChange={handleChange}
+                disabled={!isEditing}
               />
               <TextField
                 label="First Name"
                 name="firstName"
                 value={user?.first_name}
                 onChange={handleChange}
+                disabled={!isEditing}
               />
               <TextField
                 label="Last Name"
                 name="lastName"
                 value={user?.last_name}
                 onChange={handleChange}
+                disabled={!isEditing}
               />  
               <Box sx={{
                 mt: 2,
