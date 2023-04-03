@@ -38,6 +38,7 @@ const useBlogCalls = () => {
                 getBlogs()
             }
         } catch (error) {
+            console.log(error);
         }
     }
 

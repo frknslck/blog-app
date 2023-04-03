@@ -14,12 +14,13 @@ import IconButton from '@mui/material/IconButton';
 import CommentCard from "../components/blog/CommentCard"
 import CommentForm from "../components/blog/CommentForm"
 import { Helmet } from 'react-helmet'
+import  NotFound  from "../components/NotFound"
 
 const Detail = () => {
   const [open, setOpen] = useState(false)
   const { getBlogs, postLike } = useBlogCalls()
   const { id } = useParams();
-  const { blogs } = useSelector((state) => state.blogs)
+  const { blogs, error, loading } = useSelector((state) => state.blogs)
   const { currentUser } = useSelector((state) => state.auth)
   let date = new Date(blogs?.publish_date)
   const detail = true
@@ -32,18 +33,18 @@ const Detail = () => {
     <>
     <Helmet>
           <title>BlogApp - Detail of {id}</title>
-      </Helmet>
+    </Helmet>
+    {error ? <NotFound/>  :
     <Container 
-    // style={{ minHeight: `calc(100vh - 250px)`}}
-    sx={{
-      maxWidth: { xs: 500, md: 900 },
-      display: "flex",
-      flexDirection:"column",
-      justifyContent: "center",
-      my:"20px",
-      gap: 5,
-      minHeight: `calc(100vh - 250px)`
-    }}>
+      sx={{
+        minHeight: `calc(100vh - 230px)`,
+        maxWidth: { xs: 500, md: 900 },
+        display: "flex",
+        flexDirection:"column",
+        justifyContent: "center",
+        my:"20px",
+        gap: 5
+      }}>
       <Box component="img" src={blogs?.image} sx={{
         objectFit: "contain",
         // height: 350,
@@ -99,7 +100,7 @@ const Detail = () => {
           </Container>
         }
       </Box>
-    </Container>
+    </Container>}
     </>
   )
 }

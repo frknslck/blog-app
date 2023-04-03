@@ -9,7 +9,6 @@ import Dashboard from "../pages/Dashboard"
 import NewBlog from "../pages/NewBlog"
 import About from "../pages/About"
 import Detail from "../pages/Detail"
-import NotFound from "../pages/NotFound"
 import Profile from "../pages/Profile"
 import MyBlogs from "../pages/MyBlogs";
 
