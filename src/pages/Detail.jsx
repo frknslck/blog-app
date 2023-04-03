@@ -15,7 +15,7 @@ import CommentCard from "../components/blog/CommentCard"
 import CommentForm from "../components/blog/CommentForm"
 import { Helmet } from 'react-helmet'
 import  NotFound  from "../components/NotFound"
-
+import Spinner from "../components/Spinner"
 const Detail = () => {
   const [open, setOpen] = useState(false)
   const { getBlogs, postLike } = useBlogCalls()
@@ -34,7 +34,8 @@ const Detail = () => {
     <Helmet>
           <title>BlogApp - Detail of {id}</title>
     </Helmet>
-    {error ? <NotFound/>  :
+    {loading ? <Spinner/> :
+    error ? <NotFound/>  :
     <Container 
       sx={{
         minHeight: `calc(100vh - 230px)`,

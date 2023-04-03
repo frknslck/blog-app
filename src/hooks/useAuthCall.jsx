@@ -33,7 +33,7 @@ const useAuthCall = () => {
       navigate("/")
     } catch (error) {
       dispatch(fetchFail())
-      console.log(error)
+      toastErrorNotify("Login can not be performed")
     }
   }
 

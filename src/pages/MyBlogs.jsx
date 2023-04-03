@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BlogCard from "../components/blog/BlogCard";
-import useAxios from "../hooks/useAxios";
 import { Grid } from "@mui/material";
 import { Helmet } from "react-helmet";
+import Spinner from "../components/Spinner"
+import useBlogCalls from "../hooks/useBlogCalls";
 
 const MyBlogs = () => {
-    const [myBlogs, setMyBlogs] = useState([]);
+    const {getBlogs} = useBlogCalls()
     const {currentUser} = useSelector((state) => state.auth)
-    const {axiosWithToken} = useAxios()
+    const {blogs, loading} = useSelector((state) => state.blogs)
 
-    const getUserBlog = async () => {
-        const { data } = await axiosWithToken.get(`api/blogs/?author=${currentUser.id}`);
-        setMyBlogs(data)
-    };
+    const id = {
+        userID: currentUser.id,
+        query: "?author="
+    }
 
     useEffect(() => {
-        getUserBlog();
+        getBlogs(id);
     }, []);
 
   return (
@@ -24,6 +25,7 @@ const MyBlogs = () => {
         <Helmet>
             <title>BlogApp - User Blogs</title>
         </Helmet>
+        {loading ? <Spinner/> :
         <Grid container sx={{
             display: "flex", 
             justifyContent: "center", 
@@ -32,10 +34,10 @@ const MyBlogs = () => {
             my: "1.5rem",
             minHeight: `calc(100vh - 230px)`
         }}>
-            {myBlogs?.map((blog) => (
+            {blogs?.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />
             ))}
-        </Grid>
+        </Grid>}
     </>
   );
 };

@@ -4,10 +4,10 @@ import BlogCard from "../components/blog/BlogCard"
 import {useSelector} from "react-redux"
 import { Grid } from '@mui/material'
 import {Helmet} from "react-helmet";
-
+import Spinner from "../components/Spinner"
 const Dashboard = () => {
   const { getBlogs } = useBlogCalls()
-  const  { blogs }  = useSelector((state) => state.blogs)
+  const  { blogs, loading }  = useSelector((state) => state.blogs)
 
   useEffect(() => {
     getBlogs()
@@ -18,6 +18,7 @@ const Dashboard = () => {
       <Helmet>
           <title>BlogApp - Dashboard</title>
       </Helmet>
+      {loading ? <Spinner/> :
       <Grid container sx={{
         display: "flex", 
         justifyContent: "center", 
@@ -29,7 +30,7 @@ const Dashboard = () => {
         {blogs.length && blogs?.map((blog) => (
           <BlogCard key={blog?.id} blog={blog}/>
         ))}
-      </Grid>
+      </Grid>}
     </>
   )
     

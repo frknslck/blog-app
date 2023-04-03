@@ -14,6 +14,11 @@ const useBlogCalls = () => {
                 const { data } = await axiosWithToken.get(`api/categories/`)
                 const url = "categories"
                 dispatch(getSuccess({data, url}))
+            }else if (typeof id == "object"){
+                const {userID, query} = id
+                const { data } = await axiosWithToken.get(`api/blogs/${query}${userID}`)
+                const url = "blogs"
+                dispatch(getSuccess({data, url}))
             }else if (id){
                 const { data } = await axiosWithToken.get(`api/blogs/${id}/`)
                 const url = "blogs"
@@ -46,11 +51,12 @@ const useBlogCalls = () => {
         try {
             await axiosWithToken.post(`api/${url}/`, data);
             if (url === "blogs") {
-                toastSuccessNotify(`${url} successfuly added`);
+                const {title} = data
                 getBlogs();
+                toastSuccessNotify(`Blog with title of ${title} successfuly added`);
             } else {
-                toastSuccessNotify(`Comments successfuly added`);
                 getBlogs(data.post);
+                toastSuccessNotify(`Comment successfuly added`);
             }
         } catch (error) {
             console.log(error);
