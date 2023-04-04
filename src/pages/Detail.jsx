@@ -24,7 +24,15 @@ const Detail = () => {
   const { currentUser } = useSelector((state) => state.auth)
   let date = new Date(blogs?.publish_date)
   const detail = true
-  
+  const errorConfig = {
+    errorMsg: "The blog you’re looking for doesn’t exist.",
+    link: {
+      to: -1,
+      msg: "Previous Page",
+      oneortwo: true
+    }
+  }
+
   useEffect(() => {
     getBlogs(id)
   }, [])
@@ -35,7 +43,7 @@ const Detail = () => {
           <title>BlogApp - Detail of {id}</title>
     </Helmet>
     {loading ? <Spinner/> :
-    error ? <NotFound/>  :
+    error ? <NotFound errorConfig={errorConfig}/>  :
     <Container 
       sx={{
         minHeight: `calc(100vh - 230px)`,

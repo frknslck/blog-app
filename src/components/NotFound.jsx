@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export default function Error() {
+export default function Error({errorConfig}) {
   return (
     <Box
       sx={{
@@ -17,15 +17,15 @@ export default function Error() {
         404
       </Typography>
       <Typography variant="h6">
-        The page you’re looking for doesn’t exist.
+        {errorConfig.errorMsg}
       </Typography>
       <Box sx={{
         display:"flex",
         gap: 5,
         mt: 2
       }}>
-        <Button variant="contained" component={Link} to={"/"}>Home</Button>
-        <Button variant="contained" component={Link} to={-1}>Previous Page</Button>
+        {errorConfig.link.oneortwo && <Button variant="contained" component={Link} to={"/"}>Home</Button>}
+        <Button variant="contained" component={Link} to={errorConfig.link.to}>{errorConfig.link.msg}</Button>
       </Box>
     </Box>
   );
