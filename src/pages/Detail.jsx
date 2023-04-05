@@ -99,7 +99,7 @@ const Detail = () => {
           </IconButton>
         </Box>
       </Box>
-      <Box
+      {blogs?.author == currentUser.username && <Box
         sx={{
           my: 3,
           display: "flex",
@@ -120,7 +120,7 @@ const Detail = () => {
           onClick={() => deleteBlog(id)}>
           Delete Blog
         </Button>
-      </Box>
+      </Box>}
       {openModal && <UpdateModal blogs={blogs} openModal={openModal} setOpenModal={setOpenModal}/>}
       <Box>
         {open && 
