@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 export default function GuestFooter() {
   return (
@@ -33,8 +34,8 @@ export default function GuestFooter() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/about"
             sx={{
               fontFamily: 'monospace',
               fontWeight: 700,
