@@ -2,10 +2,12 @@ import {fetchFail, getSuccess, fetchStart} from "../features/blogSlice"
 import { useDispatch } from "react-redux"
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
+import { useNavigate } from "react-router-dom";
 
 const useBlogCalls = () => {
     const {axiosWithPublic, axiosWithToken} = useAxios()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const getBlogs = async (id) => {
         dispatch(fetchStart())
@@ -64,7 +66,33 @@ const useBlogCalls = () => {
         }
     }
 
-  return {getBlogs, postLike, postData}
+    const putBlog = async (id, data) => {
+        dispatch(fetchStart)
+        try {
+            await axiosWithToken.put(`api/blogs/${id}/`, data)
+            getBlogs(id)
+            toastSuccessNotify('Blog successfully updated!')
+        } catch (error) {
+            console.log(error)
+            toastErrorNotify(`Blog can not be updated`);
+            dispatch(fetchFail)
+        }
+    }
+
+    const deleteBlog = async (id) => {
+        dispatch(fetchStart)
+        try {
+            await axiosWithToken.delete(`api/blogs/${id}/`)
+            getBlogs()
+            navigate("/")
+            toastSuccessNotify(`Blog with id ${id} successfully deleted`)
+        } catch (error) {
+            console.log(error)
+            dispatch(fetchFail)
+        }
+    }
+
+  return {getBlogs, postLike, postData, putBlog, deleteBlog}
 }
 
 export default useBlogCalls

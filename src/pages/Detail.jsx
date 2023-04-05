@@ -16,9 +16,13 @@ import CommentForm from "../components/blog/CommentForm"
 import { Helmet } from 'react-helmet'
 import  NotFound  from "../components/NotFound"
 import Spinner from "../components/Spinner"
+import UpdateModal from "../components/blog/UpdateModal"
+import { Button } from '@mui/material'
+
 const Detail = () => {
   const [open, setOpen] = useState(false)
-  const { getBlogs, postLike } = useBlogCalls()
+  const [openModal, setOpenModal] = useState(false)
+  const { getBlogs, postLike, deleteBlog } = useBlogCalls()
   const { id } = useParams();
   const { blogs, error, loading } = useSelector((state) => state.blogs)
   const { currentUser } = useSelector((state) => state.auth)
@@ -32,9 +36,10 @@ const Detail = () => {
       oneortwo: true
     }
   }
-
+  const ID = "categories"
   useEffect(() => {
     getBlogs(id)
+    getBlogs(ID)
   }, [])
   
   return (
@@ -73,7 +78,7 @@ const Detail = () => {
         </Box>
       </Box>
       <Box>
-        <Typography variant='h5' sx={{mb: 1}}>{blogs?.title}</Typography>
+        <Typography variant='h5' sx={{mb: 1}}>{blogs?.title} - {blogs?.category_name}</Typography>
         <Typography variant='body1' >{blogs?.content}</Typography>
       </Box>
       <Box sx={{display: "flex", gap: 5}}>
@@ -94,13 +99,35 @@ const Detail = () => {
           </IconButton>
         </Box>
       </Box>
+      <Box
+        sx={{
+          my: 3,
+          display: "flex",
+          gap: 3,
+          justifyContent: "center",
+        }}>
+        <Button
+          variant="contained"
+          size="small"
+          color="success"
+          onClick={() => setOpenModal(!openModal)}>
+          Update Blog
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          color="error"
+          onClick={() => deleteBlog(id)}>
+          Delete Blog
+        </Button>
+      </Box>
+      {openModal && <UpdateModal blogs={blogs} openModal={openModal} setOpenModal={setOpenModal}/>}
       <Box>
         {open && 
           <Container sx={{
             display: "flex",
             flexDirection: "column",
             gap:3
-
           }}>
             {blogs?.comments?.map((comment) => (
               <CommentCard comment={comment} />
