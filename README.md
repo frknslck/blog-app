@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+<h2> React-Django Blog App is a project that aims to create blog posts using Django as a backend and display them on the dashboard. The app uses PostgreSQL for data storage, material-ui for styling, react-router for page transitions, formik and yup libraries for form structure and validation, and react-toastify for notifications. Additionally, the project uses Django backend structure for register, login, and authorization processes. With this app, users can easily create, manage, and publish blog content. </h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center">Dashboard</h2>
 
-## Available Scripts
+![image](https://user-images.githubusercontent.com/118567648/232238030-c3a9e3e5-2ec6-432a-aaa8-7317bd8aebd5.png)
 
-In the project directory, you can run:
+<h2 align="center">Deatil of blog</h2>
 
-### `npm start`
+![image](https://user-images.githubusercontent.com/118567648/232238072-556b837c-ba95-45bd-99df-b2de0201944b.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h2 align="center">Comment Section</h2>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](https://user-images.githubusercontent.com/118567648/232238107-4f1121b6-f590-4604-a834-724cc7b46c39.png)
 
-### `npm test`
+<h2 align="center">Your Blogs</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://user-images.githubusercontent.com/118567648/232238138-4222658c-9db7-4e8c-a48f-6aa767850a95.png)
 
-### `npm run build`
+<h2 align="center">New Blog</h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://user-images.githubusercontent.com/118567648/232238150-062866f4-eb96-4c28-9576-2fb67b698619.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2 align="center">About</h2>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://user-images.githubusercontent.com/118567648/232238156-c77a3cd5-67d6-4d76-8f16-2615516da7fc.png)
 
-### `npm run eject`
+<h2 align="center">Profile</h2>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://user-images.githubusercontent.com/118567648/232238164-3b234548-945f-493e-b709-6d1cd0d0c662.png)

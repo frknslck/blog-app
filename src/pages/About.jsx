@@ -57,7 +57,7 @@ const About = () => {
               />
             </IconButton>
             <IconButton
-              href="https://twitter.com/clarusway?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              href="https://github.com/frknslck"
               target="true">
               <GitHub
                 sx={{
